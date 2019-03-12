@@ -26,20 +26,6 @@ var losses = 0;
 var guesses = 9;
 var guessesChoices = [];
 
-// confirm 
-var guessGame = confirm("How good are you at guessing?")
-var wantGame = confirm("Want to play a game?")
-
-// promptv
-var confirmGame = prompt("Yes or No?");
-
-if (confirmGame) {
-    alert("Good Luck!");
-}
-else {
-     document.write("Have a good day.");
-      }
-
 // document keyup
 document.onkeyup = function(event) {
 
@@ -47,8 +33,12 @@ var userPick  = event.key;
 
 var computerpick = guessLetter[Math.floor(Math.random() * guessLetter.length)];
 
-var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q" ,"r", "s", "t", "u","v", "w", "x", "y", "z",];
+// var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q" ,"r", "s", "t", "u","v", "w", "x", "y", "z",];
 console.log(userPick); 
+
+
+
+    }
 
     if (userPick === guessLetter){
     wins ++;
@@ -64,9 +54,13 @@ console.log(userPick);
     guesses = 9;
     losses ++;
     guessChoices = [];
-}
+});
+
+    function startReset() {
+        guesses = 9;
 
 }
+
 </script>
 </body>
 </html>
