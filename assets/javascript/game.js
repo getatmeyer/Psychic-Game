@@ -1,63 +1,63 @@
-// <!DOCTYPE html>
-// <html lang="en">
 
-// // <head>
-// //     <meta charset="UTF-8">
-// // <title>Be Careful what you wish for</title>
-
-// // </head>
-// // <body>
-
-<div id="game">
-<h1>The Psychic Game</h1>
-<p>Guess what letter I'm thinking of</p>
-<p>Wins:<span id="won"></span> </p>
-<p>Losses: </p>
-<p>Guesses Left: </p>
-</div>
-
-<script type="text/javascript">
 
 // declare our variables
+var alphabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",]; 
+console.log(alphabetArray);
 
-var guessLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",]; 
 var wins = 0;
 var losses = 0;
-var guesses = 9;
+var guesses;
 var guessesChoices = [];
+var userPick = "";
+var computerPick = "";
 
 // confirm 
 var guessGame = confirm("How good are you at guessing?")
-var wantGame = confirm("Want to play a game?")
+var wantGame = confirm("Take your shot!")
 
-// promptv
-var confirmGame = prompt("Yes or No?");
+// delcare startReset function
+// function startReset() {
+//     return;
 
-if (confirmGame) {
-    alert("Good Luck!");
-}
-else {
-     document.write("Have a good day.");
-      }
 
-// document keyup
+    // guesses = 9;
+    // computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+    // console.log(computerPick);
+
+ function startReset () {
+     
+     guesses = 9;
+     
+ }
+
+// delcare 
+startReset ();
+// delcare onkey up fuction
 document.onkeyup = function(event) {
 
-var userPick  = event.key;
+    var userPick  = event.key;
+    console.log(userPick)
 
-var computerpick = guessLetter[Math.floor(Math.random() * guessLetter.length)];
+    var computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+    // var guessLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q" ,"r", "s", "t", "u","v", "w", "x", "y", "z",];
+    console.log(computerPick);
+    // return userPick
+}
 
-var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q" ,"r", "s", "t", "u","v", "w", "x", "y", "z",];
-console.log(userPick); 
-
-    if (userPick === guessLetter){
+    // If the user picks the right letter
+    if (userPick === computerPick) {
+    console.log(computerPick);
     wins ++;
     guesses = 9;
     guessesChoices = [];
 }
-
-    if (userPick !==  guessLetter) {
-    guesses --;
+    // if the user picks the wrong letter
+    else if (userPick !==  computerPick) {
+        console.log("you get wrong letter");
+        guesses --;
+        
+        console.log(userPick);
+    
     guessesChoices.push(userPick);
 }
     if (guesses === 0) {
@@ -65,8 +65,3 @@ console.log(userPick);
     losses ++;
     guessChoices = [];
 }
-
-}
-</script>
-</body>
-</html>

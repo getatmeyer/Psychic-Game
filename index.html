@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 
 <head>
     <meta charset="UTF-8">
 <title>Be Careful what you wish for</title>
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
 
 </head>
+
 <body>
 
 <div id="game">
@@ -16,51 +20,7 @@
 <p>Guesses Left: </p>
 </div>
 
-<script type="text/javascript">
-
-// declare our variables
-
-var guessLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",]; 
-var wins = 0;
-var losses = 0;
-var guesses = 9;
-var guessesChoices = [];
-
-// document keyup
-document.onkeyup = function(event) {
-
-var userPick  = event.key;
-
-var computerpick = guessLetter[Math.floor(Math.random() * guessLetter.length)];
-
-// var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q" ,"r", "s", "t", "u","v", "w", "x", "y", "z",];
-console.log(userPick); 
-
-
-
-    }
-
-    if (userPick === guessLetter){
-    wins ++;
-    guesses = 9;
-    guessesChoices = [];
-}
-
-    if (userPick !==  guessLetter) {
-    guesses --;
-    guessesChoices.push(userPick);
-}
-    if (guesses === 0) {
-    guesses = 9;
-    losses ++;
-    guessChoices = [];
-});
-
-    function startReset() {
-        guesses = 9;
-
-}
-
-</script>
+<script type="text/javascript" src="assets/javascript/game.js">
+ </script>
 </body>
 </html>
