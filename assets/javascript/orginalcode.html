@@ -1,0 +1,196 @@
+<script>
+// confirm 
+    var guessGame = confirm("How good are you at guessing?")
+    var wantGame = confirm("Take your shot!")
+
+    // declare our variables
+    var alphabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+    console.log(alphabetArray.length);
+    var wins = 0;
+    var losses = 0;
+    var guesses; 
+    var guessesChoices = [];
+    var userPick = "";
+    var computerPick = "";
+
+  
+    startReset();
+    document.onkeyup = function(event) {
+
+    userPick  = event.key;
+    console.log(userPick)
+    
+
+    console.log('wins:', wins, 'losses: ', losses)
+    console.log(computerPick);
+    // return userPick
+    winCheck();
+    
+}
+
+    //wrap these in a function to test win/lose
+    var winCheck = function() {
+
+    // If the user picks the right letter
+    if (userPick === computerPick) {
+        console.log(userPick + " inside win condition");
+        
+        wins ++;
+        guesses = 9;
+        guessesChoices = [];
+        
+        
+    }
+    
+    // if the user picks the wrong letter
+    else if (userPick !==  computerPick) {
+        console.log("you get wrong letter");
+        guesses --;
+        
+        console.log(userPick);
+        guessesChoices.push(userPick);
+    }
+        if (guesses === 9) {
+         //This is the loss condition - so here is where you'd call startReset()
+        startReset();
+    }
+
+} 
+winReset(); loseReset ();
+        //This where we define startReset
+        function startReset(){
+        computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+        guesses = 9;
+        losses ++;
+        guessChoices = [];
+       
+}
+        function winReset() {
+        computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+        wins ++;
+        gusees = 9;
+        guessChoices =[];
+        
+}
+        function loseReset() {
+            computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+            guesses = 9;
+            losses--;
+            guessesChoices = [];
+}
+    
+
+// ToDo -> 
+// Display wins/guesses to screen? 
+// Maybe a YouLose message
+//store guessChoices 
+</script>
+
+
+
+
+
+
+
+
+
+
+
+// declare global variables
+var alphabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j","k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+console.log(alphabetArray.length);
+
+var wins = 0;               // hold the number of win input
+var losses = 0;             // hold the number of losses input
+var guessesLeft = 9;        // hold the amonunt number of guessLeft, var gusses; changed to guessesLeft = 9;
+var letterGuessed = [];     // hold the value of letterGussesd, guessesChoices = [] changed to LetterGuessed = [];
+var score = 0;
+var keyholder = 0;          // variable to hold the index of alphabetArray
+
+var userPick = "";     
+var computerPick = "";
+
+
+
+
+//wrap these in a function to test win/losses
+var renderScore = function() {
+if (keyholder <= (alphabetArray.length - 1)) {
+    // document.querySelector("#score").innerHTML = alphabetArray[keyholder]
+}
+else {
+    // document.querySelector("#score").innerHTML = "Final Score: " + score + "out of " + alphabetArray.length;
+
+}
+
+// If the user picks the right letter
+if (userPick === computerPick) {
+console.log(computerPick + " inside win condition");
+
+wins ++;
+guessesLeft = 9;
+letterguessed = [];
+}
+
+// if the user picks the wrong letter
+else if (userPick !==  computerPick) {
+console.log(computerPick + "you get wrong letter");
+
+guessesLeft = 9;
+
+console.log(userPick);
+letterGuessed.push(userPick);
+}
+if (guessesLeft === 9) {
+// FILL CONTENT
+
+
+}
+// function that updates the score...
+function updatedScore () {
+document.getElementById("win").innerHTML = "win" + wins;
+
+}updatedScore ();
+
+function updatedlossesScore () {
+    document.querySelector("#losses").innerHTML = "losses" + losses;
+}updatedlossesScore();
+} 
+renderScore(game);
+
+
+
+document.onkeyup = function(event) {    // when the user presses a key, it will run the function
+
+
+userPick = event.key.toLowerCase();     // Determine which key was pressed, set to userPick varable 
+console.log(userPick)
+console.log('wins:', wins, 'losses: ', losses)
+console.log(computerPick);
+
+}
+
+function startReset() {
+computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+guessesLeft = 9;
+losses ++;
+letterGuessed = [];
+
+}
+startReset();
+
+function winReset() {
+computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+wins ++;
+gusees = 9;
+letterGuessed =[];
+
+}
+winReset();
+function loseReset() {
+    computerPick = alphabetArray[Math.floor(Math.random() * alphabetArray.length)];
+    guessesLeft = 9;
+    losses --;
+    letterGuessed = [];
+}
+loseReset ();
